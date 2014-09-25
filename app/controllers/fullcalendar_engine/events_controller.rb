@@ -23,8 +23,8 @@ module FullcalendarEngine
     end
 
     def get_events
-      start_time = Time.at(params[:start].to_i).to_formatted_s(:db)
-      end_time   = Time.at(params[:end].to_i).to_formatted_s(:db)
+      start_time = Time.parse(params[:start]).to_formatted_s(:db)
+      end_time   = Time.parse(params[:end]).to_formatted_s(:db)
 
       @events = Event.where('
                   (starttime >= :start_time and endtime <= :end_time) or
